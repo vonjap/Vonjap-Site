@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="J's Personal Portfolio & Blog – Premium showcase of video projects, PPTs, images & large creative files">
+    <title>J | PORTFOLIO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500&display=swap');
+        
+        :root {
+            --gold: #facc15;
+        }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(4rem, 10vw, 9rem);
+            line-height: 0.9;
+            letter-spacing: -0.05em;
+            color: var(--gold);
+            text-shadow: 
+                0 0 40px rgba(250, 204, 21, 0.6),
+                0 0 80px rgba(250, 204, 21, 0.3);
+        }
+        
+        .premium-glow {
+            animation: goldPulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes goldPulse {
+            0%, 100% { text-shadow: 0 0 40px rgba(250, 204, 21, 0.6); }
+            50% { text-shadow: 0 0 80px rgba(250, 204, 21, 0.9), 0 0 120px rgba(250, 204, 21, 0.4); }
+        }
+        
+        .section-header {
+            position: relative;
+        }
+        
+        .section-header::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #facc15, transparent);
+        }
+        
+        .video-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .video-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px -12px rgb(250 204 21 / 0.15);
+        }
+        
+        .scroll-indicator {
+            animation: bounce 2s infinite;
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-white overflow-x-hidden">
+    <!-- NAVBAR – Premium Portfolio Blog Style -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-zinc-950/80 backdrop-blur-xl border-b border-white/10">
+        <div class="max-w-screen-2xl mx-auto px-8 py-6 flex items-center justify-between">
+            <div class="flex items-center gap-x-3">
+                <span class="text-2xl font-bold tracking-[2px] text-amber-400">J</span>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-x-10 text-sm uppercase tracking-widest font-medium">
+                <a href="#home" class="hover:text-amber-400 transition-colors">Home</a>
+                <a href="#videos" class="hover:text-amber-400 transition-colors">Video Work</a>
+                <a href="#blog" class="hover:text-amber-400 transition-colors">Blog</a>
+                <a href="#projects" class="hover:text-amber-400 transition-colors">Projects</a>
+                <a href="#contact" class="hover:text-amber-400 transition-colors">Contact</a>
+            </div>
+            
+            <div class="flex items-center gap-x-4">
+                <a href="https://www.linkedin.com" target="_blank" class="text-white/70 hover:text-amber-400 transition-colors">
+                    <i class="fa-brands fa-linkedin text-xl"></i>
+                </a>
+                <a href="https://www.behance.net" target="_blank" class="text-white/70 hover:text-amber-400 transition-colors">
+                    <i class="fa-brands fa-behance text-xl"></i>
+                </a>
+                <!-- Portfolio PPT Button in Navbar too for easy access -->
+                <a id="ppt-btn-nav" href="#" 
+                   class="flex items-center gap-x-2 px-6 py-3 bg-amber-400 hover:bg-white text-zinc-950 font-semibold rounded-2xl transition-all text-sm uppercase tracking-widest">
+                    <i class="fa-solid fa-file-powerpoint"></i>
+                    FULL PORTFOLIO PPT
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION – Front page introduction with golden "PORTFOLIO" -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative">
+        <div class="absolute inset-0 bg-[radial-gradient(at_center,#facc1520_0%,transparent_70%)]"></div>
+        
+        <div class="max-w-screen-2xl mx-auto px-8 text-center relative z-10 pt-20">
+            <div class="mb-6 inline-flex items-center gap-x-3 bg-white/5 text-amber-400 text-sm font-medium px-6 py-3 rounded-3xl border border-amber-400/30 backdrop-blur-md">
+                <span class="relative flex h-3 w-3">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3 w-3 bg-amber-400"></span>
+                </span>
+                INDORÉ • MADHYA PRADESH
+            </div>
+            
+            <h1 class="hero-title premium-glow mb-8">
+                PORTFOLIO
+            </h1>
+            
+            <p class="max-w-2xl mx-auto text-3xl md:text-4xl font-light text-white/90 leading-tight mb-10">
+                J's personal blog &amp; creative showcase.<br>
+                Videos • Projects • Large files • PPTs • Stories
+            </p>
+            
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6 text-lg">
+                <!-- Main Portfolio PPT Button – exactly as requested -->
+                <a id="ppt-btn-hero" href="#" 
+                   onclick="handlePptClick(event)"
+                   class="group flex items-center justify-center gap-x-4 bg-gradient-to-r from-amber-400 to-yellow-300 hover:from-white hover:to-amber-400 text-zinc-950 px-12 py-6 rounded-3xl font-semibold text-xl transition-all duration-300 shadow-2xl shadow-amber-500/30 hover:shadow-amber-400/50">
+                    <i class="fa-solid fa-download group-active:scale-95 transition-transform"></i>
+                    <span>OPEN 2GB PORTFOLIO PPT</span>
+                    <span class="text-xs bg-zinc-900 text-white px-3 py-1 rounded-2xl font-mono">2.1 GB</span>
+                </a>
+                
+                <a href="#videos" 
+                   class="flex items-center gap-x-3 border border-white/30 hover:border-amber-400 px-10 py-6 rounded-3xl text-xl font-medium transition-all">
+                    Explore Video Work
+                    <i class="fa-solid fa-arrow-down scroll-indicator"></i>
+                </a>
+            </div>
+            
+            <div class="mt-24 text-white/40 text-sm uppercase tracking-[3px] flex items-center justify-center gap-x-8">
+                <div>SCROLL TO DISCOVER</div>
+                <div class="flex-1 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+            </div>
+        </div>
+
+        <!-- Premium decorative elements -->
+        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex gap-x-8 text-amber-400/30 text-6xl">
+            <i class="fa-solid fa-circle-dot"></i>
+            <i class="fa-solid fa-circle-dot"></i>
+            <i class="fa-solid fa-circle-dot"></i>
+        </div>
+    </section>
+
+    <!-- VIDEO WORKS SECTION – Shown on scrolling down -->
+    <section id="videos" class="py-28 bg-zinc-900 border-t border-white/10">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="flex justify-between items-end mb-16">
+                <div>
+                    <span class="px-5 py-2 bg-amber-400 text-zinc-950 text-sm font-bold rounded-3xl">VIDEO WORK</span>
+                    <h2 class="section-header text-6xl font-semibold mt-4 text-white">Selected Video Projects</h2>
+                </div>
+                <p class="max-w-xs text-white/70 text-lg hidden md:block">
+                    High-quality videos, motion graphics &amp; project showcases. Click any to watch full resolution.
+                </p>
+            </div>
+
+            <!-- Video Grid – Ready for your large video files -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Video 1 -->
+                <div class="video-card bg-zinc-950 rounded-3xl overflow-hidden border border-white/10">
+                    <div class="aspect-video bg-black relative group">
+                        <video class="w-full h-full object-cover" controls poster="">
+                            <source src="" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 flex items-end p-6 transition-opacity">
+                            <p class="text-amber-400 text-sm uppercase font-medium">02:14 • Motion Reel</p>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-semibold mb-3">Brand Launch Video – 2025</h3>
+                        <p class="text-white/70">Premium cinematic video for a client launch. 4K • Shot on RED • 120fps slow-motion sequences.</p>
+                        <div class="mt-6 flex items-center justify-between text-sm">
+                            <span class="flex items-center gap-x-1 text-amber-400"><i class="fa-solid fa-eye"></i> 12K views</span>
+                            <a href="#" class="text-amber-400 hover:underline flex items-center gap-x-1">Watch full HD <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="video-card bg-zinc-950 rounded-3xl overflow-hidden border border-white/10">
+                    <div class="aspect-video bg-black relative group">
+                        <video class="w-full h-full object-cover" controls poster="">
+                            <source src="video/Video Project 6.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 flex items-end p-6 transition-opacity">
+                            <p class="text-amber-400 text-sm uppercase font-medium">01:45 • Documentary Short</p>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-semibold mb-3">Street Culture – Indore 2026</h3>
+                        <p class="text-white/70">Documentary-style video capturing local art &amp; culture. Drone + handheld footage.</p>
+                        <div class="mt-6 flex items-center justify-between text-sm">
+                            <span class="flex items-center gap-x-1 text-amber-400"><i class="fa-solid fa-eye"></i> 8.4K views</span>
+                            <a href="#" class="text-amber-400 hover:underline flex items-center gap-x-1">Watch full HD <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 3 -->
+                <div class="video-card bg-zinc-950 rounded-3xl overflow-hidden border border-white/10">
+                    <div class="aspect-video bg-black relative group">
+                        <video class="w-full h-full object-cover" controls poster="">
+                            <source src="YOUR_VIDEO_3.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 flex items-end p-6 transition-opacity">
+                            <p class="text-amber-400 text-sm uppercase font-medium">03:30 • Project Highlight</p>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-semibold mb-3">UI/UX Animation Reel</h3>
+                        <p class="text-white/70">Collection of motion design work for mobile apps and web interfaces.</p>
+                        <div class="mt-6 flex items-center justify-between text-sm">
+                            <span class="flex items-center gap-x-1 text-amber-400"><i class="fa-solid fa-eye"></i> 19K views</span>
+                            <a href="#" class="text-amber-400 hover:underline flex items-center gap-x-1">Watch full HD <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="#" class="inline-flex items-center gap-x-3 text-amber-400 hover:text-white text-lg font-medium">
+                    VIEW ALL VIDEO PROJECTS 
+                    <span class="text-3xl leading-none">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUICK LINKS / MORE FILES SECTION (for PPTs, images, large files) -->
+    <section class="py-20 bg-zinc-950 border-t border-b border-white/10">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white/5 rounded-3xl p-8 flex flex-col">
+                    <i class="fa-solid fa-file-powerpoint text-6xl text-amber-400 mb-6"></i>
+                    <h3 class="text-3xl font-semibold">Full Portfolio PPT</h3>
+                    <p class="text-white/70 mt-3 flex-1">2.1 GB complete showcase – all projects, case studies &amp; high-res assets in one file.</p>
+                    <a id="ppt-btn-bottom" href="#" 
+                       onclick="handlePptClick(event)"
+                       class="mt-auto flex items-center justify-center gap-x-3 w-full bg-amber-400 text-zinc-950 py-6 rounded-2xl font-bold text-lg">
+                        OPEN 2GB PPT NOW
+                        <i class="fa-solid fa-arrow-down"></i>
+                    </a>
+                </div>
+                
+                <div class="bg-white/5 rounded-3xl p-8 flex flex-col">
+                    <i class="fa-solid fa-images text-6xl text-amber-400 mb-6"></i>
+                    <h3 class="text-3xl font-semibold">Image Gallery</h3>
+                    <p class="text-white/70 mt-3 flex-1">High-resolution photography &amp; design assets – ready to download in full size.</p>
+                    <a href="#" class="mt-auto flex items-center justify-center gap-x-3 w-full border border-amber-400 text-amber-400 hover:bg-amber-400 hover:text-zinc-950 py-6 rounded-2xl font-bold text-lg transition-colors">
+                        BROWSE IMAGE LIBRARY
+                    </a>
+                </div>
+                
+                <div class="bg-white/5 rounded-3xl p-8 flex flex-col">
+                    <i class="fa-solid fa-folder-open text-6xl text-amber-400 mb-6"></i>
+                    <h3 class="text-3xl font-semibold">Project Files</h3>
+                    <p class="text-white/70 mt-3 flex-1">Source files, After Effects projects, PSDs &amp; large ZIP archives.</p>
+                    <a href="#" class="mt-auto flex items-center justify-center gap-x-3 w-full border border-amber-400 text-amber-400 hover:bg-amber-400 hover:text-zinc-950 py-6 rounded-2xl font-bold text-lg transition-colors">
+                        ACCESS ALL FILES
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOG TEASER (keeps the "portfolio blog" theme) -->
+    <section id="blog" class="py-28 bg-zinc-900">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <h2 class="text-5xl font-semibold text-center mb-4">Latest from the Blog</h2>
+            <p class="text-center text-white/60 max-w-md mx-auto mb-16">Thoughts, behind-the-scenes &amp; creative process from Indore.</p>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-zinc-950 rounded-3xl p-8 hover:border-amber-400 border border-transparent transition-colors">
+                    <span class="text-xs tracking-widest text-amber-400">APRIL 2026</span>
+                    <h3 class="text-2xl mt-4 font-medium">How I Shot My First 8K Cinematic Video in Indore</h3>
+                    <p class="text-white/70 mt-6 line-clamp-3">Behind the scenes of my latest project using only local talent and natural light...</p>
+                </div>
+                <div class="bg-zinc-950 rounded-3xl p-8 hover:border-amber-400 border border-transparent transition-colors">
+                    <span class="text-xs tracking-widest text-amber-400">MARCH 2026</span>
+                    <h3 class="text-2xl mt-4 font-medium">Organizing 50GB of Creative Assets – My Workflow</h3>
+                    <p class="text-white/70 mt-6 line-clamp-3">Tips on managing large files, PPTs, videos and cloud backups for freelancers.</p>
+                </div>
+                <div class="bg-zinc-950 rounded-3xl p-8 hover:border-amber-400 border border-transparent transition-colors">
+                    <span class="text-xs tracking-widest text-amber-400">FEBRUARY 2026</span>
+                    <h3 class="text-2xl mt-4 font-medium">From Concept to Final Cut – My 2025 Reel Breakdown</h3>
+                    <p class="text-white/70 mt-6 line-clamp-3">Step-by-step process of creating my most viewed video portfolio piece.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-16 border-t border-white/10">
+        <div class="max-w-screen-2xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center text-white/50 text-sm">
+            <div>© 2026 J • Personal Portfolio &amp; Blog • Indore, Madhya Pradesh</div>
+            <div class="flex gap-x-8 mt-6 md:mt-0">
+                <a href="#" class="hover:text-amber-400">Privacy</a>
+                <a href="#" class="hover:text-amber-400">Terms</a>
+                <a href="#" class="hover:text-amber-400">Made with premium golden vibes ✨</a>
+            </div>
+            <div class="text-xs mt-6 md:mt-0">Ready for your large files • Videos • PPTs • Images</div>
+        </div>
+    </footer>
+
+    <script>
+        // Tailwind script initialization
+        function initializeTailwind() {
+            return {
+                config(userConfig = {}) {
+                    return {
+                        configUser: userConfig,
+                        theme: {
+                            extend: {
+                                colors: {
+                                    gold: '#facc15'
+                                }
+                            }
+                        }
+                    }
+                },
+                theme(userTheme = {}) {
+                    return {
+                        ...this.defaultTheme(),
+                        ...userTheme,
+                    }
+                },
+                defaultTheme() {
+                    return {}
+                }
+            }
+        }
+        
+        // Handle PPT button clicks (2GB file)
+        function handlePptClick(e) {
+            e.preventDefault();
+            
+            // Replace this URL with your actual hosted 2GB PPT link (Google Drive recommended)
+            const pptLink = "https://YOUR-GOOGLE-DRIVE-LINK-HERE/file/d/YOUR_FILE_ID/view?usp=sharing";
+            
+            // Optional confirmation for large file
+            if (confirm("This is a 2.1 GB PPT file.\n\nIt may take a few seconds to load depending on your connection.\n\nContinue to open?")) {
+                window.open(pptLink, "_blank");
+            }
+        }
+        
+        // Auto-initialize everything
+        document.addEventListener("DOMContentLoaded", () => {
+            const config = initializeTailwind().config();
+            document.documentElement.setAttribute('data-tailwind-config', JSON.stringify(config));
+            
+            // Smooth scroll for all anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener("click", function (e) {
+                    if (this.getAttribute('href') === '#') return;
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: "smooth" });
+                    }
+                });
+            });
+            
+            console.log('%c✅ Premium Portfolio Blog for J is ready!', 'color:#facc15; font-family:monospace; font-size:14px');
+            console.log('Replace video sources and PPT link with your own large files.');
+        });
+    </script>
+</body>
+</html>
